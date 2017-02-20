@@ -84,3 +84,30 @@ it('should NOT find a user by id', (done) => {
       done();
   });
 });
+
+
+it('should throw an error in update()', (done) => {
+  const User = new User1();
+  const Uid = '587298a376d5036c68b6ef12';
+  chai.request(server)
+      .put('/user/' + Uid)
+      .set({ origin: process.env.AllowUrl })
+      .send({ alien: 'yes' })
+      .end((err, res) => {
+        expect(err).to.be.an('error');
+        done();
+      });
+});
+
+it('should throw an error in findById()', (done) => {
+  const id = 'TYgsfn'
+  chai.request(server)
+    .get('/user/' + id)
+    .set({origin: process.env.AllowUrl})
+    .end((err, res) => {
+      expect(err).to.be.an('error');
+      done();
+    });
+});
+
+
