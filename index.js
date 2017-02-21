@@ -10,8 +10,9 @@ const routes = require('./routes');
 const cors = require('cors');
 
 // TODO: Figure out why process.env.NODE_ENV is undefined at start
+
 const corsOptions =
-{ origin: process.env.AllowUrl,
+{ origin: JSON.parse(process.env.AllowUrl).urls,
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
