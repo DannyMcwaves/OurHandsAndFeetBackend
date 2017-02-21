@@ -28,7 +28,7 @@ it('should create a new user', (done) => {
 
 
 it('should not update a user', (done) => {
-  const User = new User1();
+  // const User = new User1();
   const Uid = '587298a376d5036c68b6ef12';
   chai.request(server)
       .put('/user/' + Uid)
@@ -66,7 +66,7 @@ it('should find a user by id', (done) => {
   User.save();
   chai.request(server)
     .get('/user/' + User._id)
-    .set({origin: process.env.AllowUrl})
+    .set({ origin: process.env.AllowUrl })
     .end((err, res) => {
       expect(res).to.have.status(200);
       done();
@@ -74,20 +74,19 @@ it('should find a user by id', (done) => {
 });
 
 it('should NOT find a user by id', (done) => {
-  const User = new User1();
-  var id = "587298a376d5036c68b6ef12";
+  // const User = new User1();
+  let id = '587298a376d5036c68b6ef12';
   chai.request(server)
     .get('/user/' + id)
-    .set({origin: process.env.AllowUrl})
+    .set({ origin: process.env.AllowUrl })
     .end((err, res) => {
       expect(res).to.have.status(404);
       done();
   });
 });
 
-
 it('should throw an error in update()', (done) => {
-  const User = new User1();
+  // const User = new User1();
   const Uid = '587298a376d5036c68b6ef12';
   chai.request(server)
       .put('/user/' + Uid)
@@ -100,14 +99,13 @@ it('should throw an error in update()', (done) => {
 });
 
 it('should throw an error in findById()', (done) => {
-  const id = 'TYgsfn'
+  const id = 'TYgsfn';
   chai.request(server)
     .get('/user/' + id)
-    .set({origin: process.env.AllowUrl})
+    .set({ origin: process.env.AllowUrl })
     .end((err, res) => {
       expect(err).to.be.an('error');
       done();
     });
 });
-
 
