@@ -1,7 +1,11 @@
 
 const Book1 = require('../../model/book/book-schema');
+let allowedUrl = '';
+
+
 mockgoose(mongoose).then(() => {
   global.server = require('../../index');
+  allowedUrl = JSON.parse(process.env.AllowUrl).urls[0];
   done();
 }, undefined);
 
@@ -18,7 +22,7 @@ describe('The library feature',  () => {
 
     chai.request(server)
       .post('/book/')
-      .set({ origin: process.env.AllowUrl })
+      .set({ origin: allowedUrl })
       .send({ title: 'foobar', type: 'book' })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -29,7 +33,7 @@ describe('The library feature',  () => {
   it('should find a book', (done) => {
     chai.request(server)
       .get('/book/getall')
-      .set({ origin: process.env.AllowUrl })
+      .set({ origin: allowedUrl })
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -39,7 +43,7 @@ describe('The library feature',  () => {
   it("should post an array of new books", done => {
     chai.request(server)
         .post('/book/')
-        .set({ origin: process.env.AllowUrl })
+        .set({ origin: allowedUrl })
         .send([{ title: 'foobar', type: 'book' }, {title: "JFK", type: "PDF"}])
         .end((err, res) => {
           expect(res).to.have.status(201);
@@ -51,7 +55,7 @@ describe('The library feature',  () => {
   it("should pass for the error", done => {
     chai.request(server)
         .put('/book/johnny')
-        .set({ origin: process.env.AllowUrl })
+        .set({ origin: allowedUrl })
         .end((err, res) => {
           expect(res).to.have.status(404);
           done();

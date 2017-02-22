@@ -9,7 +9,7 @@ const config = require('./config');
 const routes = require('./routes');
 const cors = require('cors');
 
-// TODO: Figure out why process.env.NODE_ENV is undefined at start
+// TODO: Figure out why process.env.NODE_ENV is undefined at start YES
 
 const corsOptions =
 { origin: JSON.parse(process.env.AllowUrl).urls,
