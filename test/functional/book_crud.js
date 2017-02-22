@@ -1,5 +1,6 @@
 
 const Book1 = require('../../model/book/book-schema');
+// const server1 = require('../../index');
 let allowedUrl = '';
 
 
@@ -40,11 +41,11 @@ describe('The library feature',  () => {
       });
   });
 
-  it("should post an array of new books", done => {
+  it('should post an array of new books', done => {
     chai.request(server)
         .post('/book/')
         .set({ origin: allowedUrl })
-        .send([{ title: 'foobar', type: 'book' }, {title: "JFK", type: "PDF"}])
+        .send([{ title: 'foobar', type: 'book' }, { title: 'JFK', type: 'PDF' }])
         .end((err, res) => {
           expect(res).to.have.status(201);
           done();
@@ -52,7 +53,7 @@ describe('The library feature',  () => {
   });
 
   // when you call with a non-existent path, be sure to get a 404.
-  it("should pass for the error", done => {
+  it('should pass for the error', done => {
     chai.request(server)
         .put('/book/johnny')
         .set({ origin: allowedUrl })

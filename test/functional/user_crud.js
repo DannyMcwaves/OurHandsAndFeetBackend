@@ -1,7 +1,8 @@
 const User1 = require('../../model/user/user-schema');
+// const Server1 = require('../../index');
 let allowedUrl = '';
 
-const Controller = require('../../lib/controller');
+// const Controller = require('../../lib/controller');
 
 mockgoose(mongoose).then(() => {
   global.server = require('../../index');
@@ -30,14 +31,14 @@ it('should create a new user', (done) => {
 
 
 it('should not update a user when using a ID that does not exist', (done) => {
-  const User = new User1();
+  // const User = new User1();
   const Uid = '587298a376d5036c68b6ef12';
   chai.request(server)
       .put('/user/' + Uid)
       .set({ origin: allowedUrl })
       .send({ userType: 'coolGuy' })
       .end((err, res) => {
-        //expect(res).to.have.status(500);
+        // expect(res).to.have.status(500);
         expect(res.error);
         done();
       });
@@ -77,7 +78,7 @@ it('should find a user by id', (done) => {
 
 it('should NOT find a user by id', (done) => {
   // const User = new User1();
-  let id = '587298a376d5036c68b6ef12';
+  const id = '587298a376d5036c68b6ef12';
   chai.request(server)
     .get('/user/' + id)
     .set({ origin: allowedUrl })
@@ -87,7 +88,7 @@ it('should NOT find a user by id', (done) => {
   });
 });
 
-it('should throw an error in update()', (done) => {
+it('should return an error in update() when nothing was updated', (done) => {
   // const User = new User1();
   const Uid = '587298a376d5036c68b6ef12';
   chai.request(server)
