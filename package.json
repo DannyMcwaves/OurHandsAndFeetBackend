@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/UltimatePromotions/OurHandsAndFeetBackend.git"
+    "url": "git+ssh://git@github.com/WebJamApps/OurHandsAndFeetBackend.git"
   },
   "license": "MIT",
   "author": "HandlersAndKickers <>",

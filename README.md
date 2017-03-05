@@ -1,5 +1,5 @@
 # Our Hands And Feet Back end
-[![CircleCI](https://circleci.com/gh/UltimatePromotions/OurHandsAndFeetBackend.svg?style=svg)](https://circleci.com/gh/UltimatePromotions/OurHandsAndFeetBackend)
+[![CircleCI](https://circleci.com/gh/WebJamApps/OurHandsAndFeetBackend.svg?style=svg)](https://circleci.com/gh/WebJamApps/OurHandsAndFeetBackend)
 
 
 <h3>Install</h3>
