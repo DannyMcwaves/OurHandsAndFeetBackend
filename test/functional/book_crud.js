@@ -1,26 +1,19 @@
 
 const Book1 = require('../../model/book/book-schema');
 // const server1 = require('../../index');
-let allowedUrl = '',
-    Mongoose = require("mongoose")
+let allowedUrl = '';
 
-/*
 mockgoose(mongoose).then(() => {
   global.server = require('../../index');
   allowedUrl = JSON.parse(process.env.AllowUrl).urls[0];
   done();
-});
+}, undefined);
 
 mockgoose(mongoose).catch(err => {
     "use strict";
     console.log(err)
 });
 
-mockgoose(mongoose, (err, db) => {
-    "use strict";
-    console.log(err ? err : db);
-});
-*/
 describe('The library feature',  () => {
   beforeEach((done) => {
 
