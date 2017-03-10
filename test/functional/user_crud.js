@@ -41,7 +41,7 @@ describe('functional test Create User',  () => {
             .send({ userType: 'coolGuy' })
             .end((err, res) => {
                 // expect(res).to.have.status(500);
-                expect(res.error);
+                expect(res).to.have.status(404);
                 done();
             });
         // done();
@@ -99,6 +99,19 @@ describe('functional test Create User',  () => {
             .send({ alien: 'yes' })
             .end((err, res) => {
                 expect(err).to.be.an('error');
+                done();
+            });
+    });
+
+    it("should return 404 error when Id not valid on update", (done) => {
+        const Uid = '5872';
+        chai.request(server)
+            .put('/user/' + Uid)
+            .set({ origin: allowedUrl })
+            .send({ alien: 'yes' })
+            .end((err, res) => {
+                expect(err).to.be.an('error');
+                expect(res).to.have.status(400);
                 done();
             });
     });
