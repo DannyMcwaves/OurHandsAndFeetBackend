@@ -1,14 +1,25 @@
 
 const Book1 = require('../../model/book/book-schema');
 // const server1 = require('../../index');
-let allowedUrl = '';
+let allowedUrl = '',
+    mock = mockgoose(mongoose);
 
-
-mockgoose(mongoose).then(() => {
+mock.then(() => {
   global.server = require('../../index');
   allowedUrl = JSON.parse(process.env.AllowUrl).urls[0];
   done();
-}, undefined);
+});
+
+mock.catch(err => {
+    "use strict";
+    console.log(err);
+});
+
+// use this process rather to handle error rejections.
+// error rejections not functioning for manual chaining or catching.
+process.on('unhandledRejection', (err, p) => {
+    console.log('');
+});
 
 describe('The library feature',  () => {
   beforeEach((done) => {
@@ -63,14 +74,15 @@ describe('The library feature',  () => {
         });
   });
 
-  // it('should respond with error on find a book', (done) => {
-  //   // server1 = require('../../index');
-  //   chai.request(server)
-  //     .get('/book/getall')
-  //     .set({ origin: 'http://walla.com' })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(401);
-  //       done();
-  //     });
-  // });
+  it('should respond with error on find a book', (done) => {
+    // server1 = require('../../index');
+    chai.request(server)
+      .get('/book/find/one')
+      .set({ origin: allowedUrl})
+      .end((err, res) => {
+        console.log(res.status);
+        // expect(res).to.have.status(200);
+        done();
+      });
+  });
 });
