@@ -25,7 +25,7 @@ const corsOptions =
 //   console.log("MONGO DB URI is: " + process.env.MONGO_DB_URI)
 // };
 const app  = express();
-app.use(express.static(path.normalize(path.join(__dirname, 'dist'))));
+app.use(express.static(path.normalize(path.join(__dirname, 'frontend/dist'))));
 
 // app.use(function(req, res, next){
 //   //cors(corsOptions);
