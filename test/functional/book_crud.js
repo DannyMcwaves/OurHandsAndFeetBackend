@@ -1,8 +1,9 @@
 
 const Book1 = require('../../model/book/book-schema');
 // const server1 = require('../../index');
-let allowedUrl = '',
-    mock = mockgoose(mongoose);
+let allowedUrl = '';
+
+const  mock = mockgoose(mongoose);
 
 mock.then(() => {
   global.server = require('../../index');
@@ -11,7 +12,7 @@ mock.then(() => {
 });
 
 mock.catch(err => {
-    "use strict";
+    // "use strict";
     console.log(err);
 });
 
@@ -78,7 +79,7 @@ describe('The library feature',  () => {
     // server1 = require('../../index');
     chai.request(server)
       .get('/book/find/one')
-      .set({ origin: allowedUrl})
+      .set({ origin: allowedUrl })
       .end((err, res) => {
         console.log(res.status);
         // expect(res).to.have.status(200);
