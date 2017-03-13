@@ -16,8 +16,7 @@
 <h3>Authorization</h3>
 The .env contains a variable that points to the localhost of the front end and other required credentials.<br>
 
-<h3>test</h3>
-<b>npm test</b><br>
+<h3>test</h3><b>npm test</b><br>
 runs the tests and generates a coverage report. This report folder should remain outside of the test folder so that Mocca does not confuse the files inside coverage with files that it should be testing.<br><br>
 <b>npm run test:debug</b><br>
 runs the tests and allows debugging within a Chrome browser. If you install the NIM chrome extension, and set it to automatic mode, then Chrome will open automatically after you run this command.
