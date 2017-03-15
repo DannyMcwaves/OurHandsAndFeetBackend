@@ -3,19 +3,16 @@ const router = new Router();
 const user  = require('./model/user/user-router');
 const book = require('./model/book/book-router');
 const allowedUrls = JSON.parse(process.env.AllowUrl).urls;
-// const authIsOn = true;
 
 function authenticate(req, res, next) {
-  // if (authIsOn) {
-  // return next();
+  
   if (allowedUrls.indexOf(req.headers.origin) !== -1) {
+    next();
+  } else if (process.env.CORSisON === 'false') {
     next();
   } else {
     res.redirect('/');
   }
-  // } else {
-    // next();
-  // }
 }
 
 router.route('/').get((req, res) => {
