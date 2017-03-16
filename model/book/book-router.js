@@ -15,8 +15,8 @@ router.route('/getall')
   .get((...args) => controller.find(...args));
 
 // router for a particular book title.
-router.route("/find/:title")
-  .get((...args) => controller.findOne(...args));
+// router.route("/find/:title")
+//   .get((...args) => controller.findOne(...args));
 
 router.route('/')
   .post((...args) => controller.create(...args));
