@@ -9,7 +9,7 @@
   },
   "scripts": {
     "preinstall": "npm install -g yarn",
-    "postinstall": "./postinstall.sh",
+    "postinstall": "./postinstall.sh & npm run build:prod",
     "dev": "nodemon index.js",
     "build:dev": "(cd frontend || exit; npm run build:dev)",
     "build:prod": "(cd frontend || exit; npm run build:prod)",
