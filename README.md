@@ -14,7 +14,6 @@
 <br>
 <b>npm run debug</b> also starts the node debugger, which allows you to use Chrome browser to debug. You should also install the NIM add-on to Chrome and set it to automatic mode.
 
-
 <h3>Authorization</h3>
 The .env contains a variable that points to the localhost of the front end and other required credentials.<br>
 
