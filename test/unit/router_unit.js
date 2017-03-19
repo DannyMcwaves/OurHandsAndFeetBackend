@@ -1,37 +1,35 @@
-// const express = require('express');
-// 
-// describe('GET /ping', function () {
-//   var app, getBookStub, request, route;
-//   
-//   beforeEach(function () {
-//     getBookStub = sinon.stub();
-//     app = express();
-//     route = proxyquire('../../model/book/book-router.js', {
-//       '../../model/book/book-schema.js': {
-//         getall: getBookStub
-//       }
-//     });
-//     route(app);
-//     request = supertest(app);
-//   });
-//   
-//   it('should respond with 200 and a book object', function (done) {
-//     var bookData = {
-//       title: 'nodejs is awesome!'
-//     };
-//     
-//     getBookStub.returns(userData);
-//     
-//     request
-//     .get('/books/getall')
-//     .expect('Content-Type', /json/)
-//     .expect(200, function (err, res) {
-//       expect(res.body).to.deep.equal({
-//         status: 'ok',
-//         data: userData
-//       });
-//       done();
-//     });
-//   });
-// });
-// 
+const express = require('express'),
+    path = require("path"),
+    bookrouter = path.resolve("routes.js");
+
+
+describe('GET /ping', function () {
+  var app, getBookStub, request, route, controller;
+
+  beforeEach(function () {
+    getBookStub = sinon.stub();
+    controller = sinon.stub();
+    app = express();
+    route = proxyquire(bookrouter, {
+      '../../model/book/book-schema.js': {
+        getall: getBookStub
+      }
+    });
+
+    route(app); //calling route app is defunct as router does not accept an argument.
+    request = supertest(app);
+  });
+
+  it('should respond with 200 and a book object', function (done) {
+
+    request
+    .get('/')
+    .expect('Content-Type', /json/)
+    .expect(200, function (err, res) {
+      expect(res).to.have.status(200);
+      console.log(res.body);
+      done();
+    });
+  });
+});
+
