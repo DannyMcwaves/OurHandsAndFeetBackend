@@ -43,12 +43,13 @@ describe('The library feature',  () => {
       });
   });
 
-  it('should find a book', (done) => {
+  it('should return all books or raise error if no books', (done) => {
     chai.request(server)
       .get('/book/getall')
       .set({ origin: allowedUrl })
       .end((err, res) => {
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(500);
+        console.log(typeof res);
         done();
       });
   });

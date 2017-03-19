@@ -15,14 +15,15 @@ function authenticate(req, res, next) {
   }
 }
 
-router.route('/').get((req, res) => {
-  res.json({ message: 'Welcome to Our Hands and Feet API!' });
-});
-router.all('/*', authenticate, (req, res, next) => {
-  next();
-});
-router.use('/user', user);
-router.use('/auth', require('./auth'));
-router.use('/book', book);
-
-module.exports = router;
+module.exports = function (app) {
+    app.use(router);
+    router.route('/').get((req, res) => {
+        res.json({ message: 'Welcome to Our Hands and Feet API!' });
+    });
+    router.all('/*', authenticate, (req, res, next) => {
+        next();
+    });
+    router.use('/user', user);
+    router.use('/auth', require('./auth'));
+    router.use('/book', book);
+};
