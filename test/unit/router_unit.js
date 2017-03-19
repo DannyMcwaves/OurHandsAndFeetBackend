@@ -16,7 +16,7 @@ describe('GET /ping', function () {
       }
     });
 
-    route(app); //calling route app is defunct as router does not accept an argument.
+    route(app);
     request = supertest(app);
   });
 
