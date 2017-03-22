@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-if [ ! -d frontend ];
+set -e
+
+BRANCH=master
+
+if [ $NODE_ENV != "production" ]; 
 then
-    (
-        git clone https://github.com/WebJamApps/ourhandsandfeet frontend;
-        cd frontend || exit;
-        npm install;
-    )
-else
-    (
-        cd frontend || exit;
-        git checkout master;
-        git pull;
-        npm install;
-    )
+    BRANCH=dev
 fi
+
+if [ ! -d frontend ]; then
+    (git clone https://github.com/WebJamApps/ourhandsandfeet frontend)
+fi
+
+(
+    cd frontend || exit;
+    git checkout $BRANCH;
+    git pull;
+    npm install;
+)
