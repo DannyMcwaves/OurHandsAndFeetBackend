@@ -45,13 +45,13 @@ describe('The library feature',  () => {
       });
   });
 
-  it('should return all books or raise error if no books', (done) => {
+  it('should return all books', (done) => {
     chai.request(server)
       .get('/book/getall')
       .set({ origin: allowedUrl })
       .set('authorization', 'Bearer ' + authUtils.createJWT('foo2@example.com'))
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res).to.have.status(200);
         console.log(typeof res);
         done();
       });
