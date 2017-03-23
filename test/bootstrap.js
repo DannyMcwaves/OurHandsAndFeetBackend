@@ -1,4 +1,4 @@
-const bluebird = require('bluebird');
+global.bluebird = require('bluebird');
 global.chai = require('chai');
 global.chaiHttp = require('chai-http');
 global.sinon = require('sinon');
