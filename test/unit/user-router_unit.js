@@ -38,7 +38,7 @@ it('should update the new user by id', (done) => {
     chai.request(server)
         .put('/user/' + Uid)
         .set('authorization', 'Bearer ' + authUtils.createJWT('foo2@example.com'))
-        .send({ userType: 'coolGuy' })
+        .send({ userType: 'Charity' })
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();
